@@ -1,0 +1,175 @@
+﻿@model HostelNepal.Models.ViewModel.HostelViewModel
+
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("AddOrEdit", "Hostel", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-dialog" role="document" style="max-width:1000px;">
+        <div class="modal-content" style="margin-top:100px;align-content:center">
+            <div class="modal-header">
+                @if (Model == null)
+                {
+                <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Add Your Hostel</h5>
+
+                }
+                else
+                {
+            <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Update Your Hostel</h5>
+                }
+            </div>
+            <div class="modal-body">
+                <div class="form-a">
+                    @if (Model != null) {
+                    @Html.HiddenFor(model => model.HostelId)
+                    @Html.HiddenFor(model => model.MapLocation)}
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                @Html.EditorFor(model => model.HostelName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Hostel Name" } })
+                                @Html.ValidationMessageFor(model => model.HostelName, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col">
+                                @Html.EditorFor(model => model.Star, new { htmlAttributes = new { @class = "form-control form-a", @type = "text", @placeholder = "Star [1 to 4]", } })
+                                @Html.ValidationMessageFor(model => model.Star, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                @Html.EditorFor(model => model.Capacity, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Capacity of your Hostel" } })
+                                @Html.ValidationMessageFor(model => model.Capacity, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col">
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Where *(Address) Exact Location" } })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                @Html.TextAreaFor(model => model.Description, new { @style = "height:92px;", @class = "form-control", @id = "exampleFormControlTextarea1", @rows = "3", @placeholder = "Give simple description of your Hostel [more than 30 character]" })
+
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col">
+                                @Html.TextAreaFor(model => model.DescriptionNext, new { @style = "height:92px;", @class = "form-control", @id = "exampleFormControlTextarea1", @rows = "3", @placeholder = "Add more Description to show [more than 30 character]" })
+
+                                @Html.ValidationMessageFor(model => model.DescriptionNext, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                @Html.TextAreaFor(model => model.Facilites, new { @style = "height:92px;", @class = "form-control", @id = "exampleFormControlTextarea1", @row = "3", @placeholder = "Facilities of you Hostel * Use comma(,) to separate 9 facilities" })
+
+                                @Html.ValidationMessageFor(model => model.Facilites, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Hostel Contact No." } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Hostel Mail Address." } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.OnesitterPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "One Sitter Price For Hostel" } })
+                                    @Html.ValidationMessageFor(model => model.OnesitterPrice, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.TwositterPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "Two Sitter Price " } })
+                                    @Html.ValidationMessageFor(model => model.TwositterPrice, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.ThreesitterPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = " Room 3 Sitter Price" } })
+                                    @Html.ValidationMessageFor(model => model.ThreesitterPrice, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        @Html.EditorFor(model => model.Photo1, new { htmlAttributes = new { @type = "file", @class = "custom-file-input", @id = "customFile" } })
+
+                                        @Html.ValidationMessageFor(model => model.Photo1, "", new { @class = "text-danger" })
+
+                                        <label class="custom-file-label" for="customFile"> First Photo For Slide (1900x900)</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        @Html.EditorFor(model => model.Photo2, new { htmlAttributes = new { @type = "file", @class = "custom-file-input", @id = "customFile" } })
+
+                                        @Html.ValidationMessageFor(model => model.Photo2, "", new { @class = "text-danger" })
+
+                                        <label class="custom-file-label" for="customFile"> Second Photo For Slide (1900x900)</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        @Html.EditorFor(model => model.Photo3, new { htmlAttributes = new { @type = "file", @class = "custom-file-input", @id = "customFile" } })
+
+                                        @Html.ValidationMessageFor(model => model.Photo3, "", new { @class = "text-danger" })
+
+                                        <label class="custom-file-label" for="customFile"> Third Photo For Slide (1900x900)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-file">
+                            @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @type = "file", @class = "custom-file-input", @id = "customFile" } })
+                            
+                                @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                           
+
+                                <label class="custom-file-label" for="customFile">Hostel Photo Recomended (1900x900) px </label>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        @if (Model == null)
+                        {
+                            <input style="padding:1rem 1rem" type="submit" class="btn btn-c" value="ADD Hostel" />
+
+                        }
+                        else
+                        {
+                            <input style="padding:1rem 1rem" type="submit" class="btn btn-c" value="UPDATE Hostel" />
+                        }
+                        <a style="padding:1rem 1rem" href="@Url.Action("Index","Hostel")" class="btn btn-d">
+                            Your Hostels
+                        </a>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+                }
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>

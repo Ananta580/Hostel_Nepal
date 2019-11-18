@@ -1,0 +1,63 @@
+﻿@model HostelNepal.Models.ViewModel.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="margin-top:100px;align-content:center">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">LOGIN</h5>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-md-12 mb-1">
+                                <div class="form-a">
+                                    @Html.TextBoxFor(model => model.Username, null, new
+                                    {
+                                        @type = "text",
+                                        @class = "form-control form-control-lg form-control-a",
+                                        @id = "inputName",
+                                           @placeholder = "Username or Email *"
+                                    })
+                                    <br />
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-1">
+                                <div class="form-a">
+                                    @Html.TextBoxFor(model => model.Password, null, new { @type = "password", @class = "form-control form-control-lg form-control-a", @id = "password", @placeholder = "Your Password*" })
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-1">
+                                <div class="form-group">
+
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.RememberMe)
+                                        @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                                        <label class="h-50"> <span style="padding-right:10px">  </span>       Remember Me</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-1">
+                                <a href="@Url.Action("Registration","Account",new { user = "student" })" class="btn btn-c">
+                                    Student
+                                    </a>
+                                <button type="submit" class="btn btn-d">
+                                    Login
+                                </button>
+                                <a href="@Url.Action("Registration","Account",new { user = "warden" })" class="btn btn-c">
+                                    Warden
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <span class="h-50" style="color:#2eca6a;">Powered by &spades;  Hostel Nepal</span>
+        </div>
+
+

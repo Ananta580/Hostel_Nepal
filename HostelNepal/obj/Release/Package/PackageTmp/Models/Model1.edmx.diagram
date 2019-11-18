@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="73bd016d1e704bddbb4fb84656fd96d1" Name="Diagram1">
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblAdmin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblBanner" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblChoice" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblHostel" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblMessage" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblNew" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblPhoto" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblPrice" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblRole" Width="1.5" PointX="7.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblRoom" Width="1.5" PointX="8.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblStudent" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tbluser" Width="1.5" PointX="7.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblUserRole" Width="1.5" PointX="10" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HostelNepalDBModel.tblWarden" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="HostelNepalDBModel.FK_tblBanner_tblHostel" ManuallyRouted="false" />
+        <AssociationConnector Association="HostelNepalDBModel.FK_tblChoice_tblHostel" ManuallyRouted="false" />
+        <AssociationConnector Association="HostelNepalDBModel.FK_tblChoice_tblStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="HostelNepalDBModel.FK_tblHostel_tblWarden" ManuallyRouted="false" />
+        <AssociationConnector Association="HostelNepalDBModel.FK_tblPhoto_tblHostel" ManuallyRouted="false" />
+        <AssociationConnector Association="HostelNepalDBModel.FK_tblRoom_tblHostel" ManuallyRouted="false" />
+        <AssociationConnector Association="HostelNepalDBModel.FK_tblRoom_tblPrice" ManuallyRouted="false" />
+        <AssociationConnector Association="HostelNepalDBModel.FK_tblUserRole_tblRole" ManuallyRouted="false" />
+        <AssociationConnector Association="HostelNepalDBModel.FK_tblUserRole_tbluser" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

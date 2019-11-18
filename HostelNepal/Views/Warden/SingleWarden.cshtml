@@ -1,0 +1,348 @@
+﻿@model HostelNepal.Models.tblWarden
+@{
+    ViewBag.Title = "SingleWarden";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--/ Intro Single star /-->
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">@Model.WardenName</h1>
+                    <span class="color-text-a">@Model.WardenAddress</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="@Url.Action("Index","Opening")">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="@Url.Action("Index","Warden")">Wardens</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            @Model.WardenName
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Intro Single End /-->
+<section class="agent-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="agent-avatar-box">
+                            <img src="~/Images/Warden/@Model.Photo" alt="" class="agent-avatar img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-md-5 section-md-t3">
+                        <div class="agent-info-box">
+                            <div class="agent-title">
+                                <div class="title-box-d">
+                                    <h3 class="title-d">
+                                        @Model.WardenName
+                                        <br>@Model.WardenPhone
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="agent-content mb-3">
+                                <p class="content-d color-text-a">
+                                    @Model.WardenQuotes
+                                </p>
+                                <div class="info-agents color-a">
+                                    <p>
+                                        <strong>Phone: </strong>
+                                        <span class="color-text-a"> +977 @Model.WardenPhone </span>
+                                    </p>
+                                    <p>
+                                        <strong>Email: </strong>
+                                        <span class="color-text-a"> @Model.Email</span>
+                                    </p>
+                                    <p>
+                                        <strong>Address: </strong>
+                                        <span class="color-text-a"> @Model.WardenAddress</span>
+                                    </p>
+                                    <p>
+                                        <strong>Hostels: </strong>
+                                        @{
+                                            int count = 0;
+                                        }
+                                        <span class="color-text-a">
+                                            @foreach (var item in Model.tblHostels)
+                                            {
+                                                count++;
+                                                @item.HostelName
+                                                <span>  </span>
+                                            }
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="socials-footer">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <a href="#" class="link-one">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="link-one">
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="link-one">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="link-one">
+                                            <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="link-one">
+                                            <i class="fa fa-dribbble" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 section-t8">
+                <div class="title-box-d">
+                    <h3 class="title-d">My Hostels <span class="ion-ios-home">  </span>  @count<span></span></h3>
+                </div>
+
+                @foreach (var hostel in ViewBag.Hostels)
+                {
+                    if (Model.WardenId == hostel.WardenId)
+                    {
+                        ViewBag.List.Add(hostel);
+                    }
+                }
+                <section class="property-grid grid">
+                    <div class="container" style="padding-left:0px">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="grid-option">
+                                    <form>
+                                        <select class="custom-select">
+                                            <option selected>All</option>
+                                            <option value="1">New to Old</option>
+                                            <option value="2">For Rent</option>
+                                            <option value="3">For Sale</option>
+                                        </select>
+                                    </form>
+                                </div>
+                            </div>
+                            @foreach (var item in ViewBag.List)
+                            {
+
+
+                                <div class="col-md-4">
+                                    <div class="card-box-a card-shadow">
+                                        <div class="img-box-a">
+                                            <img src="~/Images/Hostel/@item.Photo" alt="" class="img-a img-fluid">
+                                        </div>
+                                        <div class="card-overlay">
+                                            <div class="card-overlay-a-content">
+                                                <div class="card-header-a">
+                                                    <h2 class="card-title-a">
+                                                        <a href="property-single.html">
+                                                            @item.HostelName
+                                                            <br />@item.Address
+                                                        </a>
+                                                    </h2>
+                                                </div>
+                                                <div class="card-body-a">
+                                                    <div class="price-box d-flex">
+                                                        @{
+                                                            List<decimal> price = new List<decimal>();
+                                                        }
+                                                        @foreach (var room in ViewBag.Rooms)
+                                                        {
+                                                            if (item.HostelId == room.HostelId)
+                                                            {
+                                                                price.Add(room.tblPrice.Price);
+                                                            }
+                                                        }
+                                                        <span class="price-a">
+                                                            Fee  @foreach (var rs in price)
+                                                            {
+                                                                <span> | </span>@rs
+                                                            }
+                                                        </span>
+                                                    </div>
+                                                    <a href="@Url.Action("SingleHostel","Hostel",new {id=item.HostelId })" class="link-a">
+                                                        Click here to view
+                                                        <span class="ion-ios-arrow-forward"></span>
+                                                    </a>
+                                                </div>
+                                                <div class="card-footer-a">
+                                                    <ul class="card-info d-flex justify-content-around">
+                                                        <li>
+                                                            <h4 class="card-info-title">Capacity</h4>
+                                                            <span>
+                                                                @item.Capacity
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <h4 class="card-info-title">Star</h4>
+                                                            <span>@item.Star</span>
+                                                        </li>
+                                                        <li>
+                                                            <h4 class="card-info-title">Address</h4>
+                                                            <span>@item.Address</span>
+                                                        </li>
+
+                                                        <li>
+                                                            <h4 class="card-info-title">Contact</h4>
+                                                            <span>@item.Phone</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <nav class="pagination-a">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">
+                                                <span class="ion-ios-arrow-back"></span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">1</a>
+                                        </li>
+                                        <li class="page-item next">
+                                            <a class="page-link" href="#">
+                                                <span class="ion-ios-arrow-forward"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+@*<div class="col-md-12 section-t8">
+                <div class="title-box-d">
+                    <h3 class="title-d">My Hostel (@count)</h3>
+                </div>
+            </div>
+            <div class="row property-grid grid">
+                <div class="col-sm-12">
+                    <div class="grid-option">
+                        <form>
+                            <select class="custom-select">
+                                <option selected>All</option>
+                                <option value="1">New to Old</option>
+                                <option value="2">For Rent</option>
+                                <option value="3">For Sale</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+                @foreach (var hostel in ViewBag.Hostels)
+                {
+                    if (Model.WardenId == hostel.WardenId)
+                    {
+                        ViewBag.List.Add(hostel);
+                    }
+                }
+                @foreach (var item in ViewBag.List)
+                {
+
+
+                    <div class="col-md-4">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="~/Images/Hostel/@item.Photo" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="property-single.html">
+                                                @item.HostelName
+                                                <br />@item.Address
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            @{
+                                                List<decimal> price = new List<decimal>();
+                                            }
+                                            @foreach (var room in ViewBag.Rooms)
+                                            {
+                                                if (item.HostelId == room.HostelId)
+                                                {
+                                                    price.Add(room.tblPrice.Price);
+                                                }
+                                            }
+                                            <span class="price-a">
+                                                Fee  @foreach (var rs in price)
+                                                {
+                                                    <span> | </span>@rs
+                                                }
+                                            </span>
+                                        </div>
+                                        <a href="@Url.Action("SingleHostel", "Hostel", new { id = item.HostelId })" class="link-a">
+                                            Click here to view
+                                            <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Capacity</h4>
+                                                <span>
+                                                    @item.Capacity
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Star</h4>
+                                                <span>@item.Star</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Address</h4>
+                                                <span>@item.Address</span>
+                                            </li>
+
+                                            <li>
+                                                <h4 class="card-info-title">Contact</h4>
+                                                <span>@item.Phone</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            </div>
+        </div>
+    </section>*@
+

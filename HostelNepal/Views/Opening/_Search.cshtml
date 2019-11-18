@@ -1,0 +1,55 @@
+﻿@model HostelNepal.Models.ViewModel.SearchViewModel
+<div class="box-collapse">
+    <div class="title-box-d">
+        <h3 class="title-d">Search Hostel</h3>
+    </div>
+    <span class="close-box-collapse right-boxed ion-ios-close"></span>
+    <div class="box-collapse-wrap form">
+        <form class="form-a">
+            <div class="row">
+                <div class="col-md-12 mb-2">
+                    <div class="form-group">
+                        <label for="Type">Keyword</label>
+                        @Html.TextBoxFor(m => m.Keyword, null, new { @type = "text", @class = "form-control form-control-lg form-control-a", @placeholder = "Keyword" })
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <div class="form-group">
+                        <label for="Type">Sitter</label>
+                        @Html.DropDownListFor(x => x.Sitter, new SelectList(ViewBag.Sitters, "RoomId", "RoomName"), "Choose Sitter", new { @id = "Type", @class = "form-control form-control-lg form-control-a" })
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <div class="form-group">
+                        <label for="city">Address</label>
+                        @Html.DropDownListFor(x => x.Address, new SelectList(ViewBag.Address, "Address", "Address"), "Choose Address", new { @id = "City", @class = "form-control form-control-lg form-control-a" })
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <div class="form-group">
+                        <label for="bedrooms">Stars</label>
+                        @Html.DropDownListFor(x => x.star, new SelectList(ViewBag.Address, "Star", "Star"), "Choose Star", new { @id = "Bedrooms", @class = "form-control form-control-lg form-control-a" })
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                </div>
+                <div class="col-md-6 mb-2">
+                    <div class="form-group">
+                        <label for="bathrooms">Minimum Price</label>
+                        @Html.TextBoxFor(m => m.MinPrice, null, new { @type = "text", @class = "form-control form-control-lg form-control-a", placeholder = "Minimum Price" })
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <div class="form-group">
+                        <label for="price">Maximum Price</label>
+                        @Html.TextBoxFor(m => m.MaxPrice, null, new { @type = "text", @class = "form-control form-control-lg form-control-a", placeholder = "Maximum Price" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-b">Search Hostel</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

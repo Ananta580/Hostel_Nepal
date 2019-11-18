@@ -1,0 +1,140 @@
+﻿@model IEnumerable<HostelNepal.Models.tblHostel>
+@{
+    ViewBag.Title = "WardenHostel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section search{
+    @Html.Action("_Search", "Opening");
+}
+@Html.AntiForgeryToken()
+<!--/ Intro Single star /-->
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">@User.Identity.Name Hostels</h1>
+                    <span class="color-text-a"> My Hostels</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Intro Single End /-->
+<!--/ Property Grid Star /-->
+<section class="property-grid grid">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="grid-option">
+                    <form>
+                        <select class="custom-select">
+                            <option selected>All</option>
+                            <option value="1">New to Old</option>
+                            <option value="2">For Rent</option>
+                            <option value="3">For Sale</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-md-4">
+                    <div class="card-box-a card-shadow">
+                        <div class="img-box-a">
+                            <img src="~/Images/Hostel/@item.Photo" alt="" class="img-a img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="property-single.html">
+                                            @item.HostelName
+                                            <br />@item.Address
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="card-body-a">
+                                    <div class="price-box d-flex">
+                                        @{
+                                            List<decimal> price = new List<decimal>();
+                                        }
+                                        @foreach (var room in ViewBag.Rooms)
+                                        {
+                                            if (item.HostelId == room.HostelId)
+                                            {
+                                                price.Add(room.tblPrice.Price);
+                                            }
+                                        }
+                                        <span class="price-a">
+                                            Fee  @foreach (var rs in price)
+                                            {
+                                                <span> | </span>@rs
+                                            }
+                                        </span>
+                                    </div>
+                                    <a href="@Url.Action("SingleHostel","Hostel",new {id=item.HostelId})" class="link-a">
+                                        Click here to view
+                                        <span class="ion-ios-arrow-forward"></span>
+                                    </a>
+                                    <a href="@Url.Action("AddOrEdit","Hostel",new {id=item.HostelId })" class="link-a">
+                                        Edit This
+                                        <span class="ion-ios-arrow-forward"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title">Capacity</h4>
+                                            <span>
+                                                @item.Capacity
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Star</h4>
+                                            <span>@item.Star</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Address</h4>
+                                            <span>@item.Address</span>
+                                        </li>
+
+                                        <li>
+                                            <h4 class="card-info-title">Contact</h4>
+                                            <span>@item.Phone</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="pagination-a">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">
+                                <span class="ion-ios-arrow-back"></span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item next">
+                            <a class="page-link" href="#">
+                                <span class="ion-ios-arrow-forward"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Property Grid End /-->

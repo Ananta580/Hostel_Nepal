@@ -1,0 +1,55 @@
+﻿@model IEnumerable<HostelNepal.Models.tblNew>
+
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="modal-dialog" role="document" style="max-width:1000px;">
+        <div class="modal-content" style="margin-top:100px;align-content:center">
+            <a class="btn btn-d" href="@Url.Action("AddOrEditNews", "Admin")"><span class="ion-md-brush">Post News</span></a>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NewsId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Photo)
+                    </th>
+                    <th>Action</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @Html.HiddenFor(modelItem => item.NewsId)
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NewsId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            <img src="~/Images/News/@item.Photo" width="50" height="50" />
+                        </td>
+                        <td>
+                            <a style="border-radius:0px" class="btn btn-outline-info" href="@Url.Action("AddOrEditNews","Admin", new { id = item.NewsId})">Edit</a>
+                            <a onclick="deleteData(@item.NewsId)" style="border-radius:0px" class="btn btn-outline-danger" href="@Url.Action("Delete","Admin", new { id = item.NewsId ,name="News"})">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+}

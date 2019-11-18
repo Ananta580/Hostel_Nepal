@@ -1,0 +1,97 @@
+﻿@model IEnumerable<HostelNepal.Models.tblHostel>
+
+<!--/ Property Star /-->
+<section class="section-property section-t8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-wrap d-flex justify-content-between">
+                    <div class="title-box">
+                        <h2 class="title-a">Latest Hostel in Nepal</h2>
+                    </div>
+                    <div class="title-link">
+                        <a href='@Url.Action("Index","Hostel")'>
+                            All Hostels
+                            <span class="ion-ios-arrow-forward"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="property-carousel" class="owl-carousel owl-theme">
+            @foreach (var item in Model)
+            {
+
+
+                <div class="carousel-item-b">
+                    <div class="card-box-a card-shadow">
+                        <div class="img-box-a">
+                            <img src="~/Images/Hostel/@item.Photo" alt="" class="img-a img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="property-single.html">
+                                            @item.HostelName
+                                            <br />@item.Address
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="card-body-a">
+                                    <div class="price-box d-flex">
+                                        @{
+                                            List<decimal> price = new List<decimal>();
+                                        }
+                                        @foreach (var room in ViewBag.Rooms)
+                                        {
+                                            if (item.HostelId == room.HostelId)
+                                            {
+                                                price.Add(room.tblPrice.Price);
+                                            }
+                                        }
+                                        <span class="price-a">
+                                            Fee  @foreach (var rs in price)
+                                            {
+                                                <span> | </span>@rs
+                                            }
+                                        </span>
+                                    </div>
+                                    <a href="#" class="link-a">
+                                        Click here to view
+                                        <span class="ion-ios-arrow-forward"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title">Capacity</h4>
+                                            <span>
+                                                @item.Capacity
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Star</h4>
+                                            <span>@item.Star</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Address</h4>
+                                            <span>@item.Address</span>
+                                        </li>
+
+                                        <li>
+                                            <h4 class="card-info-title">Contact</h4>
+                                            <span>@item.Phone</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        </div>
+    </div>
+</section>

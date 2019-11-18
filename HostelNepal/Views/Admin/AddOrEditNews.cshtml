@@ -1,0 +1,67 @@
+﻿@model HostelNepal.Models.tblNew
+
+@{
+    ViewBag.Title = "AddOrEditNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("AddOrEditNews", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-dialog" role="document" style="max-width:1000px;">
+        <div class="modal-content" style="margin-top:100px;align-content:center">
+            <div class="modal-header">
+                @if (Model == null)
+                {
+                    <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Post New News</h5>
+
+                }
+                else
+                {
+                    <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Update News</h5>
+                }
+                @if (Model != null)
+                {
+                    @Html.HiddenFor(model => model.NewsId)}
+            </div>
+            <div class="modal-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-a">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger", @style = "color:Red" })
+                    <div class="form-group">
+                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger", @style = "color:Red" })
+                           
+                        
+                           
+                    </div>
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.Description, new { @style = "height:92px;", @class = "form-control", @id = "exampleFormControlTextarea1", @rows = "3", @placeholder = "Share you Testomonial for HOSTEL NEPAL ,if you want." })
+
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <div class="upload-btn-wrapper">
+                            <button class="btnw">Upload News Photo (500x500) !</button>
+                            @Html.TextBoxFor(model => model.Photo, new { @type = "file", @class = "btnw" })
+                            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @if (Model != null)
+                        {<input style="padding:1rem 1rem" type="submit" class="btn btn-c" value="Update News" />
+                        }
+                        else
+                        {
+                            <input style="padding:1rem 1rem" type="submit" class="btn btn-c" value="Post NEWS" />}
+                        <a style="padding:1rem 1rem" href="@Url.Action("News","Admin")" class="btn btn-d">
+                            Back To List >
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <span class="h-50" style="color:#2eca6a;">Powered by &spades;  Hostel Nepal</span>
+
+    </div>
+}

@@ -1,0 +1,69 @@
+﻿@model HostelNepal.Models.ViewModel.BannerViewModel
+
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("AddOrEdit", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-dialog" role="document" style="max-width:1000px;">
+        <div class="modal-content" style="margin-top:100px;align-content:center">
+            <div class="modal-header">
+                @if (Model == null)
+                {
+                    <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Add A Banner</h5>
+
+                }
+                else
+                {
+                    <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Update Banner</h5>
+                }
+                @if (Model != null)
+                {
+                    @Html.HiddenFor(model => model.HostelId)
+                    @Html.HiddenFor(model => model.BannerId)}
+            </div>
+            <div class="modal-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-b">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger", @style = "color:Red" })
+                    <div class=" row form-group">
+                        <div class="col">
+                            @if (Model != null)
+                            {
+                                @Html.EditorFor(model => model.HostelName,new { @class="form-control"})
+                                @Html.ValidationMessageFor(model => model.HostelName, "", new { @class = "text-danger", @style = "color:Red" })}
+                            else
+                            {
+                            @Html.DropDownListFor(model => model.HostelName, new SelectList(ViewBag.Hostels, "HostelId", "HostelName"), "Choose Hostel", new { @id = "Type" })
+                            @Html.ValidationMessageFor(model => model.HostelName, "", new { @class = "text-danger", @style = "color:Red" })
+                            }
+                        </div>
+                        <div class="col">
+                            <div class="upload-btn-wrapper">
+                                <button class="btnw">Upload Banner Photo (1900x900) !</button>
+                                @Html.TextBoxFor(model => model.Photo, new { @type = "file", @class = "btnw" })
+                                @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @if (Model!=null)
+                        {<input style="padding:1rem 1rem" type="submit" class="btn btn-c" value="Update Banner" />
+                        }
+                        else
+                        {
+                            <input style="padding:1rem 1rem" type="submit" class="btn btn-c" value="Add Banner" />}
+                        <a style="padding:1rem 1rem" href="@Url.Action("Banner","Admin")" class="btn btn-d">
+                            Back To List >
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <span class="h-50" style="color:#2eca6a;">Powered by &spades;  Hostel Nepal</span>
+
+    </div>
+}

@@ -1,0 +1,166 @@
+﻿@model HostelNepal.Models.ViewModel.StudentRegistrationViewModel
+
+@{
+    ViewBag.Title = "Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Registration","Account",FormMethod.Post,new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-dialog" role="document" style="max-width:1000px;">
+        <div class="modal-content" style="margin-top:100px;align-content:center">
+            <div class="modal-header">
+                @if (Model == null)
+                {
+                    <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Register As a Student</h5>
+
+                }
+                else
+                {
+                    <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Update Your Info.</h5>
+                }
+                @if (Model != null)
+                {
+                    @Html.HiddenFor(model => model.StudentId)}
+            </div>
+            <div class="modal-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-b">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger", @style = "color:Red" })
+                    <div class=" row form-group">
+                        <div class="col">
+                            @Html.EditorFor(model => model.StudentName, new { htmlAttributes = new { @class = "form-control", @placeholder = " Firstname" } })
+                            @Html.ValidationMessageFor(model => model.StudentName, "", new { @class = "text-danger", @style = "color:Red" })
+                        </div>
+                        <div class="col">
+                            @Html.EditorFor(model => model.StudentSurName, new { htmlAttributes = new { @class = "form-control", @placeholder = " Lastname" } })
+                            @Html.ValidationMessageFor(model => model.StudentSurName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @Html.TextAreaFor(model => model.Testomonial, new { @style = "height:92px;", @class = "form-control", @id = "exampleFormControlTextarea1", @rows = "3", @placeholder = "Share you Testomonial for HOSTEL NEPAL ,if you want." })
+
+                            @Html.ValidationMessageFor(model => model.Testomonial, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.TemporaryAddress, new { htmlAttributes = new { @class = "form-control", @placeholder = "Temporary Address" } })
+                                @Html.ValidationMessageFor(model => model.TemporaryAddress, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.PermanentAddress, new { htmlAttributes = new { @class = "form-control", @placeholder = "Permanent Address" } })
+                                @Html.ValidationMessageFor(model => model.PermanentAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" row form-group">
+                        <div class="col">
+                            @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", @placeholder = "D.O.B     [YYYY-MM-DD]" } })
+                            @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger", @style = "color:Red" })
+                        </div>
+                        <div class="col">
+                            @Html.EditorFor(model => model.StudentPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Strong Password" ,@type="password"} })
+                            @Html.ValidationMessageFor(model => model.StudentPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class=" row form-group">
+                        <div class="col">
+                            @Html.EditorFor(model => model.StudentUserName, new { htmlAttributes = new { @class = "form-control", @placeholder = " Unique Username", @id = "Username", @onchange = "UserCheck()" } })
+                            @Html.ValidationMessageFor(model => model.StudentUserName, "", new { @class = "text-danger", @style = "color:Red" })
+                            <p id="Status" />
+                        </div>
+                        <div class="col">
+                            @Html.EditorFor(model => model.ComfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password",@type="password" } })
+                            @Html.ValidationMessageFor(model => model.ComfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.StudentEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Email", @id = "Email", @onchange = "EmailCheck()" } })
+                                @Html.ValidationMessageFor(model => model.StudentEmail, "", new { @class = "text-danger" })
+                                <p id="stat" />
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.Education, new { htmlAttributes = new { @class = "form-control", @placeholder = "Education   [ SEE ,+2 ,Bachelor]" } })
+                                @Html.ValidationMessageFor(model => model.Education, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.StudentPhone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Contact Number" } })
+                                @Html.ValidationMessageFor(model => model.StudentPhone, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="upload-btn-wrapper">
+                                <button class="btnw">Upload Photo (650x450)</button>
+                                @Html.TextBoxFor(model => model.StudentPhoto, new { @type = "file", @class = "btnw" })
+                                @Html.ValidationMessageFor(model => model.StudentPhoto, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="upload-btn-wrapper">
+                                <button class="btnw">Upload Avatar (80x80) !</button>
+                                @Html.TextBoxFor(model => model.AvatarPhoto, new { @type = "file", @class = "btnw" })
+                                @Html.ValidationMessageFor(model => model.AvatarPhoto, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @if (User.IsInRole("Student"))
+                        { <input style="padding:1rem 1rem" type="submit" class="btn btn-c" value="Update Account" />
+                        }
+                        else
+                        {
+                        <input style="padding:1rem 1rem" type="submit" class="btn btn-c" value="Register Student" />}
+                        <a style="padding:1rem 1rem" href="@Url.Action("Login","Account")" class="btn btn-d">
+                            Back To Login >
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <span class="h-50" style="color:#2eca6a;">Powered by &spades;  Hostel Nepal</span>
+    
+       </div>
+}
+<script>
+    function UserCheck() {
+        $("#Status").html("Checking...");
+        $.post("@Url.Action("CheckUsernameAvailability", "Account")",
+            {
+                userdata: $("#Username").val()
+            },
+        function (data) {
+            if (data == 0) {
+                $("#Status").html('<font color="Green">Available !. you can take it.</font>');
+                $("#Username").css("border-color", "Green");
+
+            }
+            else {
+                $("#Status").html('<font color="Red">That name is taken.Try Another.</font>');
+                $("#Username").css("border-color", "Red");
+            }
+        });
+    }
+    function EmailCheck() {
+        $("#Stat").html("Checking...");
+        $.post("@Url.Action("CheckEmailAvailability", "Account")",
+            {
+                userdata: $("#Email").val()
+            },
+        function (data) {
+            if (data == 0) {
+                $("#stat").html('<font color="Green">It is Valid.</font>');
+                $("#Email").css("border-color", "Green");
+
+            }
+            else {
+                $("#stat").html('<font color="Red">This is already Registered</font>');
+                $("#Email").css("border-color", "Red");
+            }
+        });
+    }
+</script>

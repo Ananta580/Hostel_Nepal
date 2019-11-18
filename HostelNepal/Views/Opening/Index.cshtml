@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section search{
+    @Html.Action("_Search")
+    <script>
+        function myHostel() {
+            var dots = document.getElementById("dotsHostel");
+            var moreText = document.getElementById("moreHostel");
+            var btnText = document.getElementById("myBtnHostel");
+
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = 'Read more <span class="ion-ios-arrow-forward"></span>';
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = 'Read less...';
+                moreText.style.display = "inline";
+            }
+        }
+        function myPrice() {
+            var dots = document.getElementById("dotsPrice");
+            var moreText = document.getElementById("morePrice");
+            var btnText = document.getElementById("myBtnPrice");
+
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = 'Read more <span class="ion-ios-arrow-forward"></span>';
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = 'Read less...';
+                moreText.style.display = "inline";
+            }
+        }
+        function myQuality() {
+            var dots = document.getElementById("dotsQuality");
+            var moreText = document.getElementById("moreQuality");
+            var btnText = document.getElementById("myBtnQuality");
+
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = 'Read more <span class="ion-ios-arrow-forward"></span>';
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = 'Read less...';
+                moreText.style.display = "inline";
+            }
+        }
+    </script>
+}
+@Html.Action("_Banner")
+<section class="section-services section-t8">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="title-wrap d-flex justify-content-between">
+                    <div class="title-box">
+                        <h2 class="title-a">Our Services</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-box-c foo">
+                    <div class="card-header-c d-flex">
+                        <div class="card-box-ico">
+                            <span class="fa fa-home"></span>
+                        </div>
+                        <div class="card-title-c align-self-center">
+                            <h2 class="title-c">Hostels</h2>
+                        </div>
+                    </div>
+                    <div class="card-body-c">
+                        <p class="content-c">
+                            Hostel Nepal provides maximum hostel of nepal with their information like Prices , capacity
+                            , Address, Reviews and help you to select the best<span id="dotsHostel">...</span><span id="moreHostel">
+                                one for you.That's Why it has been choosen by lots of
+                                student for selecting their home like Hostels.
+                            </span>
+                        </p>
+
+                    </div>
+                    <div class="card-footer-c">
+                        <a class="link-c link-icon" id="myBtnHostel" href="#" onclick="myHostel();return false;">
+                            Read more
+                            <span class="ion-ios-arrow-forward"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-box-c foo">
+                    <div class="card-header-c d-flex">
+                        <div class="card-box-ico">
+                            <span class="fa fa-dollar"></span>
+                        </div>
+                        <div class="card-title-c align-self-center">
+                            <h2 class="title-c">Prices</h2>
+                        </div>
+                    </div>
+                    <div class="card-body-c">
+                        <p class="content-c">
+                            Here we Provide you the Hostels of best affordable prices, We have become an well knowned Company for
+                            Provide Services to the student stugglnig <span id="dotsPrice">...</span><span id="morePrice">
+                                to choose   there Best Affordable Prices and Here we Provide facilty
+                                to compare all Hostels around Nepal.
+                            </span>
+                        </p>
+
+                    </div>
+                    <div class="card-footer-c">
+                        <a class="link-c link-icon" id="myBtnPrice" href="#" onclick="myPrice();return false;">
+                            Read more
+                            <span class="ion-ios-arrow-forward"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card-box-c foo">
+                    <div class="card-header-c d-flex">
+                        <div class="card-box-ico">
+                            <span class="fa fa-flag-checkered"></span>
+                        </div>
+                        <div class="card-title-c align-self-center">
+                            <h2 class="title-c">Quality</h2>
+                        </div>
+                    </div>
+                    <div class="card-body-c">
+                        <p class="content-c">
+                            Quality matters to every Person.Quality for Healthy Food and Environment matters to everyone.We hereby
+                            helps to check Quality of Hostel to choose  <span id="dotsQuality">...</span><span id="moreQuality">
+                                best one for Students
+                                and Hostellers also will get Chances to make their Hostel popular by rising in Quality.
+                            </span>
+                        </p>
+                    </div>
+                    <div class="card-footer-c">
+                        <a class="link-c link-icon" id="myBtnQuality" href="#" onclick="myQuality();return false;">
+                            Read more
+                            <span class="ion-ios-arrow-forward"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@Html.Action("_LatestHostel")
+@if(Request.IsAuthenticated){ 
+@Html.Action("_BestWarden")
+}
+@Html.Action("_LatestNews")
+@Html.Action("_Testomonial")
+<!--/ Services End /-->

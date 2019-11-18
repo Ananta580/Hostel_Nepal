@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Action("_Search","Opening")
+
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">Contact Us</h1>
+                    <span class="color-text-a">Our Office is established for the help of student and hosteller and Passionated for Hosteller to spread their popularity too. We are now Nepal #1 Hostel recruiter site where one can easily apply and choose a hostel best for them.</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="@Url.Action("Index","Opening")">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Contact
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="contact-map box">
+                    <div class="mapouter">
+                        <div class="gmap_canvas"><iframe width="820" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=kantipur%20engineering&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/elementor-review/"></a></div>
+                        <style>
+                            .mapouter {
+                                position: relative;
+                                text-align: right;
+                                height: 500px;
+                                width: 820px;
+                            }
+
+                            .gmap_canvas {
+                                overflow: hidden;
+                                background: none !important;
+                                height: 500px;
+                                width: 820px;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-12 section-t8">
+                <div class="row">
+                    @Html.Action("_MessageUs", "Office")
+                    <div class="col-md-5 section-md-t3">
+                        <div class="icon-box section-b2">
+                            <div class="icon-box-icon">
+                                <span class="ion-ios-paper-plane"></span>
+                            </div>
+                            <div class="icon-box-content table-cell">
+                                <div class="icon-box-title">
+                                    <h4 class="icon-title">Say Hello</h4>
+                                </div>
+                                <div class="icon-box-content">
+                                    <p class="mb-1">
+                                        Email.
+                                        <span class="color-a">anantapoudel580@gmail.com</span>
+                                    </p>
+                                    <p class="mb-1">
+                                        Phone.
+                                        <span class="color-a">+977 9846863918</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon-box section-b2">
+                            <div class="icon-box-icon">
+                                <span class="ion-ios-pin"></span>
+                            </div>
+                            <div class="icon-box-content table-cell">
+                                <div class="icon-box-title">
+                                    <h4 class="icon-title">Find us in</h4>
+                                </div>
+                                <div class="icon-box-content">
+                                    <p class="mb-1">
+                                        Hattiban, LALIPUR,
+                                        <br> Near LA College.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon-box">
+                            <div class="icon-box-icon">
+                                <span class="ion-ios-redo"></span>
+                            </div>
+                            <div class="icon-box-content table-cell">
+                                <div class="icon-box-title">
+                                    <h4 class="icon-title">Social networks</h4>
+                                </div>
+                                <div class="icon-box-content">
+                                    <div class="socials-footer">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                    <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="#" class="link-one">
+                                                    <i class="fa fa-dribbble" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

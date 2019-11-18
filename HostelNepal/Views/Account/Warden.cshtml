@@ -1,0 +1,157 @@
+﻿@model HostelNepal.Models.ViewModel.WardenRegistrationViewModel
+
+@using (Html.BeginForm("Registration","Account",FormMethod.Post,new{ @enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-dialog" role="document" style="max-width:1000px;">
+        <div class="modal-content" style="margin-top:100px;align-content:center">
+            <div class="modal-header">
+                @if (Model == null)
+                {
+                    <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Register As a Warden</h5>
+
+                }
+                else
+                {
+                    <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Update Your Info.</h5>
+                }
+            </div>
+            @if (Model != null)
+            {
+                @Html.HiddenFor(model => model.WardenId)}
+            <div class="modal-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-a">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class=" row form-group">
+                        <div class="col">
+                            @Html.EditorFor(model => model.WardenName, new { htmlAttributes = new { @class = "form-control", @placeholder = " Firstname" } })
+                            @Html.ValidationMessageFor(model => model.WardenName, "", new { @class = "text-danger", @style = "color:Red" })
+                        </div>
+                        <div class="col">
+                            @Html.EditorFor(model => model.WardenSurName, new { htmlAttributes = new { @class = "form-control", @placeholder = " Lastname" } })
+                            @Html.ValidationMessageFor(model => model.WardenSurName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br style="color:#2eca6a" />
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                @Html.TextAreaFor(model => model.WardenQuotes, new { @style = "height:92px;", @class = "form-control", @id = "exampleFormControlTextarea1", @rows = "3", @placeholder = "Share Yor Experience as Quote...." })
+
+                                @Html.ValidationMessageFor(model => model.WardenQuotes, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.WardenPhone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Phone" } })
+                                    @Html.ValidationMessageFor(model => model.WardenPhone, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.WardenAddress, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Address" } })
+                                    @Html.ValidationMessageFor(model => model.WardenAddress, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Unique Username", @id = "Username", @onchange = "UserCheck()" } })
+                                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    <p id="Status" />
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @id = "Email", @onchange = "EmailCheck()" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    <p id="stat" />
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Strong Password" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Confirm Password" } })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="upload-btn-wrapper">
+                                <button class="btnw">Upload Photo(800x900) Recommended</button>
+                                @Html.TextBoxFor(model => model.Photo, new { @type = "file", @class = "btnw" })
+                            </div>
+                            <div class="form-group">
+                                @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <span style=" margin-bottom:5px; border:dotted;border-color:black;border-radius:10px;padding:0.3rem 1rem; text-align:right;color:darkslategray"> TO   ADD   YOUR   HOSTEL   REGISTER   AND  THEN  LOGIN </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @if (User.IsInRole("Warden"))
+                        {
+                            <input style="padding:1rem 1rem" type="submit" class="btn btn-c" value="Update Account" />}
+                        else
+                        {
+                            <input style="padding:1rem 1rem" type="submit" class="btn btn-c" value="Register Warden" />}
+                        <a style="padding:1rem 1rem" href="@Url.Action("Login","Account")" class="btn btn-d">
+                            Back To Login >
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <span class="h-50" style="color:#2eca6a;">Powered by &spades;  Hostel Nepal</span>
+    </div>
+
+
+}
+<script>
+    function UserCheck() {
+        $("#Status").html("Checking...");
+        $.post("@Url.Action("CheckUsernameAvailability", "Account")",
+            {
+                userdata: $("#Username").val()
+            },
+        function (data) {
+            if (data == 0) {
+                $("#Status").html('<font color="Green">Available !. you can take it.</font>');
+                $("#Username").css("border-color", "Green");
+
+            }
+            else {
+                $("#Status").html('<font color="Red">That name is taken.Try Another.</font>');
+                $("#Username").css("border-color", "Red");
+            }
+        });
+    }
+    function EmailCheck() {
+        $("#Stat").html("Checking...");
+        $.post("@Url.Action("CheckEmailAvailability", "Account")",
+            {
+                userdata: $("#Email").val()
+            },
+        function (data) {
+            if (data == 0) {
+                $("#stat").html('<font color="Green">It is Valid .</font>');
+                $("#Email").css("border-color", "Green");
+
+            }
+            else {
+                $("#stat").html('<font color="Red">This is already Registered</font>');
+                $("#Email").css("border-color", "Red");
+            }
+        });
+    }
+</script>

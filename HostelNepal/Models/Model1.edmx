@@ -1,0 +1,874 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HostelNepalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblBanner">
+          <Key>
+            <PropertyRef Name="BannerId" />
+          </Key>
+          <Property Name="BannerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HostelId" Type="int" />
+          <Property Name="Activated" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblChoice">
+          <Key>
+            <PropertyRef Name="ChoiceId" />
+          </Key>
+          <Property Name="ChoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="HostelId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblHostel">
+          <Key>
+            <PropertyRef Name="HostelId" />
+          </Key>
+          <Property Name="HostelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HostelName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Star" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Capacity" Type="int" />
+          <Property Name="MapLocation" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="WardenId" Type="int" />
+          <Property Name="Latest" Type="nvarchar" MaxLength="50" />
+          <Property Name="DescriptionNext" Type="nvarchar(max)" />
+          <Property Name="Facilites" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblMessage">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Tag" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblNew">
+          <Key>
+            <PropertyRef Name="NewsId" />
+          </Key>
+          <Property Name="NewsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblPhoto">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Name="PhotoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="HostelId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPrice">
+          <Key>
+            <PropertyRef Name="PriceId" />
+          </Key>
+          <Property Name="PriceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblRoom">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PriceId" Type="int" />
+          <Property Name="HostelId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblStudent">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TemporaryAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="PermanentAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Education" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Testomonial" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AvatarPhoto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbluser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Flag" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblWarden">
+          <Key>
+            <PropertyRef Name="WardenId" />
+          </Key>
+          <Property Name="WardenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WardenName" Type="nvarchar" MaxLength="50" />
+          <Property Name="WardenQuotes" Type="nvarchar(max)" />
+          <Property Name="WardenPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="WardenAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Best" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tblBanner_tblHostel">
+          <End Role="tblHostel" Type="Self.tblHostel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblBanner" Type="Self.tblBanner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="tblBanner">
+              <PropertyRef Name="HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblChoice_tblHostel">
+          <End Role="tblHostel" Type="Self.tblHostel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblChoice" Type="Self.tblChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="tblChoice">
+              <PropertyRef Name="HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblChoice_tblStudent">
+          <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblChoice" Type="Self.tblChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudent">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="tblChoice">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHostel_tblWarden">
+          <End Role="tblWarden" Type="Self.tblWarden" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblHostel" Type="Self.tblHostel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblWarden">
+              <PropertyRef Name="WardenId" />
+            </Principal>
+            <Dependent Role="tblHostel">
+              <PropertyRef Name="WardenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPhoto_tblHostel">
+          <End Role="tblHostel" Type="Self.tblHostel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPhoto" Type="Self.tblPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="tblPhoto">
+              <PropertyRef Name="HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRoom_tblHostel">
+          <End Role="tblHostel" Type="Self.tblHostel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblRoom" Type="Self.tblRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="tblRoom">
+              <PropertyRef Name="HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRoom_tblPrice">
+          <End Role="tblPrice" Type="Self.tblPrice" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblRoom" Type="Self.tblRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrice">
+              <PropertyRef Name="PriceId" />
+            </Principal>
+            <Dependent Role="tblRoom">
+              <PropertyRef Name="PriceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRole_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblUserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRole_tbluser">
+          <End Role="tbluser" Type="Self.tbluser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbluser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HostelNepalDBModelStoreContainer">
+          <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBanner" EntityType="Self.tblBanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblChoice" EntityType="Self.tblChoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHostel" EntityType="Self.tblHostel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMessage" EntityType="Self.tblMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNew" EntityType="Self.tblNew" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPhoto" EntityType="Self.tblPhoto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPrice" EntityType="Self.tblPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRoom" EntityType="Self.tblRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStudent" EntityType="Self.tblStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbluser" EntityType="Self.tbluser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWarden" EntityType="Self.tblWarden" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblBanner_tblHostel" Association="Self.FK_tblBanner_tblHostel">
+            <End Role="tblHostel" EntitySet="tblHostel" />
+            <End Role="tblBanner" EntitySet="tblBanner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblChoice_tblHostel" Association="Self.FK_tblChoice_tblHostel">
+            <End Role="tblHostel" EntitySet="tblHostel" />
+            <End Role="tblChoice" EntitySet="tblChoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblChoice_tblStudent" Association="Self.FK_tblChoice_tblStudent">
+            <End Role="tblStudent" EntitySet="tblStudent" />
+            <End Role="tblChoice" EntitySet="tblChoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHostel_tblWarden" Association="Self.FK_tblHostel_tblWarden">
+            <End Role="tblWarden" EntitySet="tblWarden" />
+            <End Role="tblHostel" EntitySet="tblHostel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPhoto_tblHostel" Association="Self.FK_tblPhoto_tblHostel">
+            <End Role="tblHostel" EntitySet="tblHostel" />
+            <End Role="tblPhoto" EntitySet="tblPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRoom_tblHostel" Association="Self.FK_tblRoom_tblHostel">
+            <End Role="tblHostel" EntitySet="tblHostel" />
+            <End Role="tblRoom" EntitySet="tblRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRoom_tblPrice" Association="Self.FK_tblRoom_tblPrice">
+            <End Role="tblPrice" EntitySet="tblPrice" />
+            <End Role="tblRoom" EntitySet="tblRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRole_tblRole" Association="Self.FK_tblUserRole_tblRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblUserRole" EntitySet="tblUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRole_tbluser" Association="Self.FK_tblUserRole_tbluser">
+            <End Role="tbluser" EntitySet="tbluser" />
+            <End Role="tblUserRole" EntitySet="tblUserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HostelNepalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblBanner">
+          <Key>
+            <PropertyRef Name="BannerId" />
+          </Key>
+          <Property Name="BannerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HostelId" Type="Int32" />
+          <Property Name="Activated" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblHostel" Relationship="Self.FK_tblBanner_tblHostel" FromRole="tblBanner" ToRole="tblHostel" />
+        </EntityType>
+        <EntityType Name="tblChoice">
+          <Key>
+            <PropertyRef Name="ChoiceId" />
+          </Key>
+          <Property Name="ChoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="HostelId" Type="Int32" />
+          <NavigationProperty Name="tblHostel" Relationship="Self.FK_tblChoice_tblHostel" FromRole="tblChoice" ToRole="tblHostel" />
+          <NavigationProperty Name="tblStudent" Relationship="Self.FK_tblChoice_tblStudent" FromRole="tblChoice" ToRole="tblStudent" />
+        </EntityType>
+        <EntityType Name="tblHostel">
+          <Key>
+            <PropertyRef Name="HostelId" />
+          </Key>
+          <Property Name="HostelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HostelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Star" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Capacity" Type="Int32" />
+          <Property Name="MapLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WardenId" Type="Int32" />
+          <Property Name="Latest" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionNext" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Facilites" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblBanners" Relationship="Self.FK_tblBanner_tblHostel" FromRole="tblHostel" ToRole="tblBanner" />
+          <NavigationProperty Name="tblChoices" Relationship="Self.FK_tblChoice_tblHostel" FromRole="tblHostel" ToRole="tblChoice" />
+          <NavigationProperty Name="tblWarden" Relationship="Self.FK_tblHostel_tblWarden" FromRole="tblHostel" ToRole="tblWarden" />
+          <NavigationProperty Name="tblPhotoes" Relationship="Self.FK_tblPhoto_tblHostel" FromRole="tblHostel" ToRole="tblPhoto" />
+          <NavigationProperty Name="tblRooms" Relationship="Self.FK_tblRoom_tblHostel" FromRole="tblHostel" ToRole="tblRoom" />
+        </EntityType>
+        <EntityType Name="tblMessage">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblNew">
+          <Key>
+            <PropertyRef Name="NewsId" />
+          </Key>
+          <Property Name="NewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblPhoto">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Name="PhotoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HostelId" Type="Int32" />
+          <NavigationProperty Name="tblHostel" Relationship="Self.FK_tblPhoto_tblHostel" FromRole="tblPhoto" ToRole="tblHostel" />
+        </EntityType>
+        <EntityType Name="tblPrice">
+          <Key>
+            <PropertyRef Name="PriceId" />
+          </Key>
+          <Property Name="PriceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="tblRooms" Relationship="Self.FK_tblRoom_tblPrice" FromRole="tblPrice" ToRole="tblRoom" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblUserRoles" Relationship="Self.FK_tblUserRole_tblRole" FromRole="tblRole" ToRole="tblUserRole" />
+        </EntityType>
+        <EntityType Name="tblRoom">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PriceId" Type="Int32" />
+          <Property Name="HostelId" Type="Int32" />
+          <NavigationProperty Name="tblHostel" Relationship="Self.FK_tblRoom_tblHostel" FromRole="tblRoom" ToRole="tblHostel" />
+          <NavigationProperty Name="tblPrice" Relationship="Self.FK_tblRoom_tblPrice" FromRole="tblRoom" ToRole="tblPrice" />
+        </EntityType>
+        <EntityType Name="tblStudent">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TemporaryAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Education" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Testomonial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AvatarPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblChoices" Relationship="Self.FK_tblChoice_tblStudent" FromRole="tblStudent" ToRole="tblChoice" />
+        </EntityType>
+        <EntityType Name="tbluser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Flag" Type="Int32" />
+          <NavigationProperty Name="tblUserRoles" Relationship="Self.FK_tblUserRole_tbluser" FromRole="tbluser" ToRole="tblUserRole" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="tblRole" Relationship="Self.FK_tblUserRole_tblRole" FromRole="tblUserRole" ToRole="tblRole" />
+          <NavigationProperty Name="tbluser" Relationship="Self.FK_tblUserRole_tbluser" FromRole="tblUserRole" ToRole="tbluser" />
+        </EntityType>
+        <EntityType Name="tblWarden">
+          <Key>
+            <PropertyRef Name="WardenId" />
+          </Key>
+          <Property Name="WardenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WardenName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WardenQuotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WardenPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WardenAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Best" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblHostels" Relationship="Self.FK_tblHostel_tblWarden" FromRole="tblWarden" ToRole="tblHostel" />
+        </EntityType>
+        <Association Name="FK_tblBanner_tblHostel">
+          <End Role="tblHostel" Type="Self.tblHostel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblBanner" Type="Self.tblBanner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="tblBanner">
+              <PropertyRef Name="HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblChoice_tblHostel">
+          <End Role="tblHostel" Type="Self.tblHostel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblChoice" Type="Self.tblChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="tblChoice">
+              <PropertyRef Name="HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblChoice_tblStudent">
+          <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblChoice" Type="Self.tblChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudent">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="tblChoice">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHostel_tblWarden">
+          <End Role="tblWarden" Type="Self.tblWarden" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblHostel" Type="Self.tblHostel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblWarden">
+              <PropertyRef Name="WardenId" />
+            </Principal>
+            <Dependent Role="tblHostel">
+              <PropertyRef Name="WardenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPhoto_tblHostel">
+          <End Role="tblHostel" Type="Self.tblHostel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPhoto" Type="Self.tblPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="tblPhoto">
+              <PropertyRef Name="HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRoom_tblHostel">
+          <End Role="tblHostel" Type="Self.tblHostel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblRoom" Type="Self.tblRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="tblRoom">
+              <PropertyRef Name="HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRoom_tblPrice">
+          <End Role="tblPrice" Type="Self.tblPrice" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblRoom" Type="Self.tblRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrice">
+              <PropertyRef Name="PriceId" />
+            </Principal>
+            <Dependent Role="tblRoom">
+              <PropertyRef Name="PriceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRole_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblUserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRole_tbluser">
+          <End Role="tbluser" Type="Self.tbluser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbluser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HostelNepalDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAdmins" EntityType="Self.tblAdmin" />
+          <EntitySet Name="tblBanners" EntityType="Self.tblBanner" />
+          <EntitySet Name="tblChoices" EntityType="Self.tblChoice" />
+          <EntitySet Name="tblHostels" EntityType="Self.tblHostel" />
+          <EntitySet Name="tblMessages" EntityType="Self.tblMessage" />
+          <EntitySet Name="tblNews" EntityType="Self.tblNew" />
+          <EntitySet Name="tblPhotoes" EntityType="Self.tblPhoto" />
+          <EntitySet Name="tblPrices" EntityType="Self.tblPrice" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
+          <EntitySet Name="tblRooms" EntityType="Self.tblRoom" />
+          <EntitySet Name="tblStudents" EntityType="Self.tblStudent" />
+          <EntitySet Name="tblusers" EntityType="Self.tbluser" />
+          <EntitySet Name="tblUserRoles" EntityType="Self.tblUserRole" />
+          <EntitySet Name="tblWardens" EntityType="Self.tblWarden" />
+          <AssociationSet Name="FK_tblBanner_tblHostel" Association="Self.FK_tblBanner_tblHostel">
+            <End Role="tblHostel" EntitySet="tblHostels" />
+            <End Role="tblBanner" EntitySet="tblBanners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblChoice_tblHostel" Association="Self.FK_tblChoice_tblHostel">
+            <End Role="tblHostel" EntitySet="tblHostels" />
+            <End Role="tblChoice" EntitySet="tblChoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblChoice_tblStudent" Association="Self.FK_tblChoice_tblStudent">
+            <End Role="tblStudent" EntitySet="tblStudents" />
+            <End Role="tblChoice" EntitySet="tblChoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHostel_tblWarden" Association="Self.FK_tblHostel_tblWarden">
+            <End Role="tblWarden" EntitySet="tblWardens" />
+            <End Role="tblHostel" EntitySet="tblHostels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPhoto_tblHostel" Association="Self.FK_tblPhoto_tblHostel">
+            <End Role="tblHostel" EntitySet="tblHostels" />
+            <End Role="tblPhoto" EntitySet="tblPhotoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRoom_tblHostel" Association="Self.FK_tblRoom_tblHostel">
+            <End Role="tblHostel" EntitySet="tblHostels" />
+            <End Role="tblRoom" EntitySet="tblRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRoom_tblPrice" Association="Self.FK_tblRoom_tblPrice">
+            <End Role="tblPrice" EntitySet="tblPrices" />
+            <End Role="tblRoom" EntitySet="tblRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRole_tblRole" Association="Self.FK_tblUserRole_tblRole">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblUserRole" EntitySet="tblUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRole_tbluser" Association="Self.FK_tblUserRole_tbluser">
+            <End Role="tbluser" EntitySet="tblusers" />
+            <End Role="tblUserRole" EntitySet="tblUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HostelNepalDBModelStoreContainer" CdmEntityContainer="HostelNepalDBEntities">
+          <EntitySetMapping Name="tblAdmins">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblAdmin">
+              <MappingFragment StoreEntitySet="tblAdmin">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBanners">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblBanner">
+              <MappingFragment StoreEntitySet="tblBanner">
+                <ScalarProperty Name="BannerId" ColumnName="BannerId" />
+                <ScalarProperty Name="HostelId" ColumnName="HostelId" />
+                <ScalarProperty Name="Activated" ColumnName="Activated" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChoices">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblChoice">
+              <MappingFragment StoreEntitySet="tblChoice">
+                <ScalarProperty Name="ChoiceId" ColumnName="ChoiceId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="HostelId" ColumnName="HostelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHostels">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblHostel">
+              <MappingFragment StoreEntitySet="tblHostel">
+                <ScalarProperty Name="HostelId" ColumnName="HostelId" />
+                <ScalarProperty Name="HostelName" ColumnName="HostelName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Star" ColumnName="Star" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="MapLocation" ColumnName="MapLocation" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="WardenId" ColumnName="WardenId" />
+                <ScalarProperty Name="Latest" ColumnName="Latest" />
+                <ScalarProperty Name="DescriptionNext" ColumnName="DescriptionNext" />
+                <ScalarProperty Name="Facilites" ColumnName="Facilites" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMessages">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblMessage">
+              <MappingFragment StoreEntitySet="tblMessage">
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNews">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblNew">
+              <MappingFragment StoreEntitySet="tblNew">
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPhotoes">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblPhoto">
+              <MappingFragment StoreEntitySet="tblPhoto">
+                <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="HostelId" ColumnName="HostelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPrices">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblPrice">
+              <MappingFragment StoreEntitySet="tblPrice">
+                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRole">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRooms">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblRoom">
+              <MappingFragment StoreEntitySet="tblRoom">
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
+                <ScalarProperty Name="HostelId" ColumnName="HostelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStudents">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblStudent">
+              <MappingFragment StoreEntitySet="tblStudent">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="TemporaryAddress" ColumnName="TemporaryAddress" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Testomonial" ColumnName="Testomonial" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="AvatarPhoto" ColumnName="AvatarPhoto" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblusers">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tbluser">
+              <MappingFragment StoreEntitySet="tbluser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRoles">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblUserRole">
+              <MappingFragment StoreEntitySet="tblUserRole">
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblWardens">
+            <EntityTypeMapping TypeName="HostelNepalDBModel.tblWarden">
+              <MappingFragment StoreEntitySet="tblWarden">
+                <ScalarProperty Name="WardenId" ColumnName="WardenId" />
+                <ScalarProperty Name="WardenName" ColumnName="WardenName" />
+                <ScalarProperty Name="WardenQuotes" ColumnName="WardenQuotes" />
+                <ScalarProperty Name="WardenPhone" ColumnName="WardenPhone" />
+                <ScalarProperty Name="WardenAddress" ColumnName="WardenAddress" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Best" ColumnName="Best" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

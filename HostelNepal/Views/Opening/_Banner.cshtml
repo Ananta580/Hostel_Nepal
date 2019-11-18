@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HostelNepal.Models.tblBanner>
+<div class="intro intro-carousel">
+    <div id="carousel" class="owl-carousel owl-theme">
+        @foreach (var item in Model)
+        {
+            <div class="carousel-item-a intro-item bg-image" style="background-image:url('Images/Banner/@item.Photo');">
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="intro-body">
+                                        <p class="intro-title-top">
+                                            @item.tblHostel.Address
+                                            <br> @item.tblHostel.Phone
+                                        </p>
+                                        <h1 class="intro-title mb-4">
+                                            <span class="color-b">@item.tblHostel.HostelName </span>
+                                            <br> @item.tblHostel.tblWarden.WardenName
+                                        </h1>
+                                        <p class="intro-subtitle intro-price">
+                                            @{
+                                                List<decimal> price = new List<decimal>();
+                                                }
+                                                @foreach (var room in ViewBag.Rooms)
+                                            {
+                                                    if (item.HostelId == room.HostelId)
+                                                    {
+                                                        price.Add ( room.tblPrice.Price);
+                                                }
+                                            }
+                                            <a href="#">
+                                                <span class="price-a">
+                                                    Fee @foreach (var rs in price)
+                                                    {
+                                                    <span> | </span>@rs
+                                                    }
+                                                </span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<!--/ Carousel end /-->

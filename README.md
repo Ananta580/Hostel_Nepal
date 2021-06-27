@@ -1,2 +1,2 @@
 # Hostel_Nepal
-HostelNepal is an web Program where User can find hostels all over nepal and Hosteller can make thei hostel more known .It is platform to find hostels
+Hostel Nepal was a conceptual website where user can find hostels all over Nepal and hosteler can make their hostel more known to others .It was a conceptual platform to find hostels, It was my indie Project which take 2 Month for Development and other time for Concept and Visualization .

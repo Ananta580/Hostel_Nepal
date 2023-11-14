@@ -77,3 +77,7 @@ C:\Users\anant\source\repos\HostelNepal\HostelNepal\obj\Debug\HostelNepal.csproj
 C:\Users\anant\source\repos\HostelNepal\HostelNepal\obj\Debug\HostelNepal.csproj.CopyComplete
 C:\Users\anant\source\repos\HostelNepal\HostelNepal\obj\Debug\HostelNepal.dll
 C:\Users\anant\source\repos\HostelNepal\HostelNepal\obj\Debug\HostelNepal.pdb
+E:\ANANTA\Github Project\Hostel_Nepal\HostelNepal\obj\Debug\HostelNepal.csproj.AssemblyReference.cache
+E:\ANANTA\Github Project\Hostel_Nepal\HostelNepal\obj\Debug\HostelNepal.csproj.CoreCompileInputs.cache
+E:\ANANTA\Github Project\Hostel_Nepal\HostelNepal\obj\Debug\HostelNepal.dll
+E:\ANANTA\Github Project\Hostel_Nepal\HostelNepal\obj\Debug\HostelNepal.pdb

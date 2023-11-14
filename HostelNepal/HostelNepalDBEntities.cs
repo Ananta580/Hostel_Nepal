@@ -14,19 +14,19 @@ namespace HostelNepal.Models
         }
 
 
-        public virtual DbSet<tblAdmin> tblAdmins { get; set; }
-        public virtual DbSet<tblBanner> tblBanners { get; set; }
-        public virtual DbSet<tblChoice> tblChoices { get; set; }
-        public virtual DbSet<tblHostel> tblHostels { get; set; }
-        public virtual DbSet<tblMessage> tblMessages { get; set; }
-        public virtual DbSet<tblNew> tblNews { get; set; }
-        public virtual DbSet<tblPhoto> tblPhotoes { get; set; }
-        public virtual DbSet<tblPrice> tblPrices { get; set; }
-        public virtual DbSet<tblRole> tblRoles { get; set; }
-        public virtual DbSet<tblRoom> tblRooms { get; set; }
-        public virtual DbSet<tblStudent> tblStudents { get; set; }
-        public virtual DbSet<tbluser> tblusers { get; set; }
-        public virtual DbSet<tblUserRole> tblUserRoles { get; set; }
-        public virtual DbSet<tblWarden> tblWardens { get; set; }
+        public DbSet<tblAdmin> tblAdmins { get; set; }
+        public DbSet<tblBanner> tblBanners { get; set; }
+        public DbSet<tblChoice> tblChoices { get; set; }
+        public DbSet<tblHostel> tblHostels { get; set; }
+        public DbSet<tblMessage> tblMessages { get; set; }
+        public DbSet<tblNew> tblNews { get; set; }
+        public DbSet<tblPhoto> tblPhotoes { get; set; }
+        public DbSet<tblPrice> tblPrices { get; set; }
+        public DbSet<tblRole> tblRoles { get; set; }
+        public DbSet<tblRoom> tblRooms { get; set; }
+        public DbSet<tblStudent> tblStudents { get; set; }
+        public DbSet<tbluser> tblusers { get; set; }
+        public DbSet<tblUserRole> tblUserRoles { get; set; }
+        public DbSet<tblWarden> tblWardens { get; set; }
     }
 }

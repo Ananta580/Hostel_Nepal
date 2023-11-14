@@ -2,6 +2,7 @@ namespace HostelNepal.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class tblWarden
     {
@@ -10,6 +11,7 @@ namespace HostelNepal.Models
             this.tblHostels = new HashSet<tblHostel>();
         }
 
+        [Key]
         public int WardenId { get; set; }
         public string WardenName { get; set; }
         public string WardenQuotes { get; set; }

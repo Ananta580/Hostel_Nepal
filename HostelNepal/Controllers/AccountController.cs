@@ -34,8 +34,6 @@ namespace HostelNepal.Controllers
                 {
                     return RedirectToAction("Index", "Opening");
                 }
-
-
             }
             else
             {
@@ -127,7 +125,7 @@ namespace HostelNepal.Controllers
                     tbluser tb = db.tblusers.Where(x => x.UserName == student.UserName).FirstOrDefault();
                     tblUserRole tr = new tblUserRole();
                     tr.UserId = tb.UserId;
-                    tr.RoleId = 2;
+                    tr.RoleId = 3;
                     db.tblUserRoles.Add(tr);
                     db.SaveChanges();
                 }
@@ -203,7 +201,7 @@ namespace HostelNepal.Controllers
 
                     tblUserRole tr = new tblUserRole();
                     tr.UserId = tb.UserId;
-                    tr.RoleId = 3;
+                    tr.RoleId = 2;
                     db.tblUserRoles.Add(tr);
                     db.SaveChanges();
 

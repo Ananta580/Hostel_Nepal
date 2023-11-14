@@ -2,6 +2,7 @@
 using HostelNepal.Models.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -29,8 +30,8 @@ namespace HostelNepal.Controllers
         }
         public ActionResult _Banner()
         {
-            ViewBag.Rooms = db.tblRooms.ToList();
-            List<tblBanner> lst = db.tblBanners.Where(x => x.Activated =="True" || x.Activated == "true").ToList();
+            ViewBag.Rooms = db.tblRooms.Include("tblHostel").ToList();
+            List<tblBanner> lst = db.tblBanners.Where(x => x.Activated =="True" || x.Activated == "true").Include("tblHostel").ToList();
             return PartialView("_Banner",lst);
         }
         public ActionResult _LatestHostel()

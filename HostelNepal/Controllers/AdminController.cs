@@ -19,7 +19,7 @@ namespace HostelNepal.Controllers
         {
             List<BannerViewModel> lst = new List<BannerViewModel>();
             
-            foreach (var item in db.tblBanners.ToList())
+            foreach (var item in db.tblBanners.Include("tblHostel").ToList())
             {
                 BannerViewModel banner = new BannerViewModel();
                 banner.BannerId = item.BannerId;
@@ -34,7 +34,7 @@ namespace HostelNepal.Controllers
                     }
                     banner.HostelId = item.HostelId;
                     banner.Photo = item.Photo;
-                    banner.HostelName = item.tblHostel.HostelName;
+                    // banner.HostelName = item.tblHostel.HostelName;
                     lst.Add(banner);
             }
             return View("Banner",lst);
@@ -60,7 +60,7 @@ namespace HostelNepal.Controllers
                     db.SaveChanges();
                 }
             }
-            foreach (var item in db.tblBanners.ToList())
+            foreach (var item in db.tblBanners.Include("tblHostel").ToList())
             {
                 BannerViewModel banner = new BannerViewModel();
                 banner.BannerId = item.BannerId;
